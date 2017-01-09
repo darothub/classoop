@@ -1,38 +1,23 @@
 'use strict'
 
-var findMinMax = function(arr){
-	if (!Array.isArray(arr)){
-		return "This is not an Array"
-  	}
-  	if(arr === null){
-  		return "This is not an Array"
-  	}
-  	
-  	for (var j = 0; j<arr.length; j++){
-  		if (arr[j].constructor === String ){
-  			return "invalid argument";
-  		}
-  	}
-  	var Minmax = [];
-	var maxi = arr[0];
-	var mini = arr[0];
-  	for(var i=1; i<arr.length; i++){
-		if(arr[i] > maxi){
-			maxi = arr[i];
-		}
-		if(arr[i]<mini){
-			mini = arr[i]
-		}
-  	}
-  	
-  	Minmax.push(mini);
-  	Minmax.push(maxi);
-  	if (mini === maxi){
-  		return [mini];
-  	}
-  	return Minmax;
+var Sport = function (name, height, weight){
+	this.name = name;
+	this.height = height;
+	this.weight = weight;
 }
-  	 	
+Sport.prototype.run = function(distance){
+	this.distance = distance;
+	this.legs = 2;
+	return "hi i am " + this.name + "\n" + "and i can run with " + this.legs + "over " + this.distance;
+}	
+
+var Football = function(){
+	Sport.call(this)
+}
+var Athletics = function(){
+	Sport.call(this)
+}
+
 module.exports = {
-	findMinMax : findMinMax
+	Sport : Sport
 };
